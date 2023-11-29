@@ -10,6 +10,8 @@ import ApplicationPage from './Component/Application/ApplicationPage';
 import UploadForm from './Component/Application/UploadForm';
 import StatusForm from './Component/Application/StatusForm';
 import NewApplicationForm from './Component/Application/NewApplication';
+import ProductPage from './Component/Product/ProductPage';
+import AddProduct from './Component/Product/AddProduct';
 function App() {
    
   return (
@@ -27,6 +29,8 @@ function App() {
           <Route path="/Application/NewApplication" element={<NewApplicationForm />} />
           <Route path="/Application/Upload" element={<UploadForm />} />
           <Route path="/Application/Status" element={<StatusForm />} />
+          <Route path="/Products" element={<ProductPage />} />
+          <Route path="/Products/NewProducts" element={<AddProduct />} />
           </Routes>
       </Box>
     </>

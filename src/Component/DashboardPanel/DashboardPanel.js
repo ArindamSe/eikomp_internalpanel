@@ -1,20 +1,30 @@
 import { Box, Typography } from '@mui/material'
 import React from 'react'
 import { Link } from 'react-router-dom'
-
+import { Typewriter } from 'react-simple-typewriter'
 
 
 function DashboardPanel() {
-    const complianceproduct=["Notification", "Compliance", "Application","Products"]
+    
+  
+  const complianceproduct=["Notification", "Compliance", "Application","Products"]
+ 
+
+ 
+
+  const handleDone = () => {
+    console.log(`Done after 5 loops!`)
+  }
+ 
   return (
 <>
 <Box>
 <Box
   sx={{
-    backgroundImage: 'url("https://www.imop.co.in/assets/img/About/compliance.jpeg")',
+    backgroundImage: 'url("https://www.cloud4c.com/sites/default/files/inline-images/compliance-consulting-45.jpg")',
     backgroundSize: 'cover', // This will make sure the image covers the entire box
     width: '100%', // Full width
-    height: '20rem', // Set the height to 50rem
+    height: '18.9rem', // Set the height to 50rem
     display:"flex",
     alignItems:"center",
     justifyContent:"center",
@@ -22,12 +32,31 @@ function DashboardPanel() {
     borderBottomRightRadius:"10rem",
     borderBottomLeftRadius:"10rem",
     boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.4)',
+    '@media (max-width: 740px)': {
+      // Apply styles for screens with a maximum width of 600 pixels (adjust as needed)
+      borderBottomRightRadius: "5rem",
+      borderBottomLeftRadius: "5rem",
+    },
   }}
-> <Typography sx={{fontWeight:"bolder",fontSize:"40px", color:"white",fontFamily: 'Georgia, "Times New Roman", Times, serif'}}>Welcome to compliance Services</Typography></Box>   <Box className="dashboardContainer" 
+> <Typography sx={{fontWeight:"bolder",fontSize:"40px", color:"#ec407a",fontFamily: 'Georgia, "Times New Roman", Times, serif'}}>
+Welcome to  
+<Typewriter
+            words={[' Compliance Services']}
+            loop={true}
+            cursor
+            cursorStyle='_'
+            typeSpeed={70}
+            deleteSpeed={50}
+            delaySpeed={1000}
+            onLoopDone={handleDone}
+            
+          />
+</Typography></Box>   <Box className="dashboardContainer" 
 sx={{
     display: "flex",
     flexWrap: "wrap",
     justifyContent: "top",
+    paddingBottom:"20px",
     width: "100%",
     gap: 1,
   }}> 
