@@ -4,6 +4,47 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { motion } from 'framer-motion';
+import { styled } from '@mui/system';
+
+const WhiteBorderTextField = styled(TextField)(({ theme }) => ({
+  '& .MuiOutlinedInput-root': {
+    '& fieldset': {
+      borderColor: 'white',
+    },
+    '&:hover fieldset': {
+      borderColor: 'white',
+    },
+    '&.Mui-focused fieldset': {
+      borderColor: 'white',
+    },
+  },
+  '& .MuiInputLabel-root': {
+    color: 'white',
+  },
+}));
+
+
+const WhiteColorDatePicker = styled(DatePicker)(({ theme }) => ({
+  '& .MuiInputBase-input': {
+    color: 'white', // Set text color
+  },
+  '& .MuiInputLabel-root': {
+    color: 'white', // Set label color
+  },
+  '& .MuiOutlinedInput-root': {
+    '& fieldset': {
+      borderColor: 'white', // Set border color
+    },
+    '&:hover fieldset': {
+      borderColor: 'white', // Set border color on hover
+    },
+    '&.Mui-focused fieldset': {
+      borderColor: 'white', // Set border color when focused
+    },
+  },
+}));
+
+
 function AddNotification() {
     const currencies = [
         {
@@ -32,21 +73,26 @@ function AddNotification() {
       };
   return (
     <>
-    <Container sx={{  backgroundColor:"#e1f5fe",marginTop:"2rem", borderRadius:"5rem",paddingBottom:"1rem"}}>
+    <Box sx={{height:"40rem",backgroundColor:"#e1f5fe"}}>
+    <Typography sx={{fontSize:"30px",fontWeight:"bolder",fontFamily: 'Georgia, "Times New Roman", Times, serif',  backgroundImage: `linear-gradient(90deg, #1a237e, #283593, #1a237e, #1f272d, #0a0a0a)`,
+    WebkitBackgroundClip: 'text', 
+    color: 'transparent', }} align='center' >
+    All Detail Is Neccesary To Fill 
+     </Typography>
+    <Container sx={{ marginBottom:"4rem" ,backgroundColor:"#01579b",marginTop:"2rem", borderRadius:"5rem",paddingBottom:"1rem"}}>
     <motion.div
     initial={{ opacity: 0, x: -100, scale: 0.8 }}
     animate={{ opacity: 1, x: 0, scale: 1 }}
     exit={{ opacity: 0, x: 100, scale: 0.8 }}
     transition={{ duration: 1 }}
   >
+  
+    
     <Box padding="16px" >
+    
     <Grid container spacing={2} sx={{paddingBottom:"1rem"}}>
    
-    <Grid item xs={12} sm={12} md={12}>
-        <Typography sx={{fontSize:"30px",fontWeight:"bolder",fontFamily: 'Georgia, "Times New Roman", Times, serif',  backgroundImage: `linear-gradient(90deg, #1a237e, #283593, #1a237e, #1f272d, #0a0a0a)`,
-        WebkitBackgroundClip: 'text', 
-        color: 'transparent', }} align='center' >All Detail Is Neccesary To Fill  </Typography>
-      </Grid>
+    
       <Grid align="right" item xs={12} sm={12} md={12}>
       <Button
           variant="contained"
@@ -72,43 +118,46 @@ function AddNotification() {
          Add Notification
         </Button>
       </Grid>
-      <Grid item xs={12} sm={6} md={4}>
-      <TextField  
+      <Grid item xs={12} sm={6} md={4} >
+      <WhiteBorderTextField 
       id="outlined-basic" 
       label="Category" 
       variant="outlined" 
+      backgroundColor="white"
       fullWidth 
       InputLabelProps={{
         sx: {
           fontWeight: 'bold',
-          color: 'brown',
+          color: 'white',
           '&.Mui-focused': {
-            color: 'brown', 
-            borderColor: 'brown', // Set the border color when focused
+            color: 'white', 
+            borderColor: 'white', // Set the border color when focused
           },
         },
       }}
       sx={{
         fontWeight: 'bold',
+        borderColor: "white", // Set the border color
       }}
     />
     
+    
       </Grid>
       <Grid item xs={12} sm={6} md={4}>
-        <TextField id="outlined-basic" label="Country" variant="outlined" fullWidth    
+        <WhiteBorderTextField id="outlined-basic" label="Country" variant="outlined" fullWidth    
         InputLabelProps={{
           sx: {
             fontWeight: 'bold',
-            color: 'brown',
+            color: 'white',
             '&.Mui-focused': {
-              color: 'brown', 
+              color: 'white',
               borderColor: 'brown', // Set the border color when focused
             },
           },
         }}/>
       </Grid>
       <Grid item xs={12} sm={6} md={4}>
-        <TextField
+        <WhiteBorderTextField
           id="outlined-select-currency"
           select
           label="Select Industries"
@@ -117,9 +166,9 @@ function AddNotification() {
           fullWidth     InputLabelProps={{
             sx: {
               fontWeight: 'bold',
-              color: 'brown',
+              color: 'white',
               '&.Mui-focused': {
-                color: 'brown',
+                color: 'white',
                 borderColor:"2px solid brown"
                  // Set the color when focused
               },
@@ -142,10 +191,10 @@ function AddNotification() {
               {option.label}
             </MenuItem>
           ))}
-        </TextField>
+        </WhiteBorderTextField>
       </Grid>
       <Grid item xs={12} sm={6} md={4}>
-        <TextField
+        <WhiteBorderTextField
           id="outlined-select-currency"
           select
           label="Select Compliance"
@@ -179,23 +228,23 @@ function AddNotification() {
               {option.label}
             </MenuItem>
           ))}
-        </TextField>
+        </WhiteBorderTextField>
       </Grid>
       <Grid item xs={12} sm={6} md={4}>
-        <TextField id="outlined-basic" label="Title" variant="outlined" fullWidth  
+        <WhiteBorderTextField id="outlined-basic" label="Title" variant="outlined" fullWidth  
         InputLabelProps={{
           sx: {
             fontWeight: 'bold',
             color: 'brown',
             '&.Mui-focused': {
-              color: 'brown', 
-              borderColor: 'brown', // Set the border color when focused
+              color: 'white',
+              color: 'white',// Set the border color when focused
             },
           },
         }}/>
       </Grid>
       <Grid item xs={12} sm={6} md={4}>
-      <TextField
+      <WhiteBorderTextField
         id="outlined-select-currency"
         select
         label="Select Product"
@@ -204,9 +253,9 @@ function AddNotification() {
         fullWidth       InputLabelProps={{
           sx: {
             fontWeight: 'bold',
-            color: 'brown',
+            color: 'white',
             '&.Mui-focused': {
-              color: 'brown', 
+              color: 'white',
               borderColor: 'brown', // Set the border color when focused
             },
           },
@@ -228,11 +277,11 @@ function AddNotification() {
             {option.label}
           </MenuItem>
         ))}
-      </TextField>
+      </WhiteBorderTextField>
     </Grid>
       
       <Grid item xs={12} sm={4} md={6}>
-      <TextField
+      <WhiteBorderTextField
         id="outlined-select-currency"
         select
         label="Select Waste Type"
@@ -242,9 +291,9 @@ function AddNotification() {
         InputLabelProps={{
           sx: {
             fontWeight: 'bold',
-            color: 'brown',
+            color: 'white',
             '&.Mui-focused': {
-              color: 'brown', 
+              color: 'white',
               borderColor: 'brown', // Set the border color when focused
             },
           },
@@ -266,26 +315,26 @@ function AddNotification() {
             {option.label}
           </MenuItem>
         ))}
-      </TextField>
+      </WhiteBorderTextField>
     </Grid>
    
 
      
 
       <Grid item xs={12} md={6}>
-        <TextField id="outlined-basic" label="Status" variant="outlined" fullWidth    InputLabelProps={{
+        <WhiteBorderTextField id="outlined-basic" label="Status" variant="outlined" fullWidth    InputLabelProps={{
           sx: {
             fontWeight: 'bold',
-            color: 'brown',
+            color: 'white',
             '&.Mui-focused': {
-              color: 'brown', 
+              color: 'white',
               borderColor: 'brown', // Set the border color when focused
             },
           },
         }}/>
       </Grid>
       <Grid item xs={12} md={6}>
-        <TextField
+        <WhiteBorderTextField
           id="outlined-multiline-flexible"
           label="Content"
           multiline
@@ -294,9 +343,9 @@ function AddNotification() {
           InputLabelProps={{
             sx: {
               fontWeight: 'bold',
-              color: 'brown',
+              color: 'white',
               '&.Mui-focused': {
-                color: 'brown', 
+                color: 'white',
                 borderColor: 'brown', // Set the border color when focused
               },
             },
@@ -308,7 +357,7 @@ function AddNotification() {
         />
       </Grid>
       <Grid item xs={12} md={6}>
-      <TextField
+      <WhiteBorderTextField
         id="outlined-multiline-flexible"
         label="Brief"
         multiline
@@ -318,9 +367,9 @@ function AddNotification() {
         InputLabelProps={{
           sx: {
             fontWeight: 'bold',
-            color: 'brown',
+            color: 'white',
             '&.Mui-focused': {
-              color: 'brown', 
+              color: 'white',
               borderColor: 'brown', // Set the border color when focused
             },
           },
@@ -364,7 +413,7 @@ function AddNotification() {
       <Grid item xs={6} md={5} sx={{marginTop: 2,}}>
         <LocalizationProvider 
         dateAdapter={AdapterDayjs}>
-          <DatePicker />
+        <WhiteColorDatePicker />
         </LocalizationProvider>
       </Grid>
    
@@ -372,6 +421,7 @@ function AddNotification() {
     </Grid>
   </Box></motion.div>
     </Container>
+    </Box>
     </>
   )
 }
