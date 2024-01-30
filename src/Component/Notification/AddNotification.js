@@ -5,6 +5,8 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { motion } from 'framer-motion';
 import { styled } from '@mui/system';
+import Buttons from '../Acesories/Button/Buttons';
+
 
 const WhiteBorderTextField = styled(TextField)(({ theme }) => ({
   '& .MuiOutlinedInput-root': {
@@ -29,7 +31,8 @@ const WhiteColorDatePicker = styled(DatePicker)(({ theme }) => ({
     color: 'white', // Set text color
   },
   '& .MuiInputLabel-root': {
-    color: 'white', // Set label color
+    color: 'white',
+    width:"5rem" // Set label color
   },
   '& .MuiOutlinedInput-root': {
     '& fieldset': {
@@ -94,31 +97,10 @@ function AddNotification() {
    
     
       <Grid align="right" item xs={12} sm={12} md={12}>
-      <Button
-          variant="contained"
-          size="small"
-          sx={{
-            
-            backgroundImage: `linear-gradient(90deg,#ff8a65 30%, #ffab91 90%)`,
-            color: "brown",
-            fontWeight:"bold",
-            marginRight: 3,
-           
-            transitions:`transition: opacity 0.7s ease-in-out`,
-            '&:hover': {
-                transform: 'scale(1.05)', 
-              },
-            "@media (max-width: 600px)": {
-              fontSize: "10px",
-              fontWeight: "bold",
-              height: "40px",
-            },
-          }}
-        >
-         Add Notification
-        </Button>
+      <Buttons buttonName={"Add Notification"} />
+  
       </Grid>
-      <Grid item xs={12} sm={6} md={4} >
+      <Grid item xs={12} sm={12} md={12} >
       <WhiteBorderTextField 
       id="outlined-basic" 
       label="Category" 

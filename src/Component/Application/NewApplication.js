@@ -1,6 +1,8 @@
 import { Box, TextField,Button, Typography,MenuItem} from '@mui/material'
 import React,{useState} from 'react'
 import { motion } from 'framer-motion';
+import Buttons from '../Acesories/Button/Buttons';
+
 function NewApplicationForm() {
 
     const currencies = [
@@ -148,32 +150,8 @@ function NewApplicationForm() {
 
  
   
-     <Button
-            variant="contained"
-            size="small"
-            marginBottom='5rem'
-          align="right"
-            sx={{
-                backgroundImage: "#ccff90"
-                , marginTop:"2rem",
-               marginLeft:"14rem",
-               fontWeight: 'bold',
-              backgroundColor: '#55B700',
-              color: '#01579b',
-              width:"6rem",
-              transitions: 'transition: opacity 0.7s ease-in-out',
-              '&:hover': {
-                transform: 'scale(1.05)',
-              },
-              '@media (max-width: 600px)': {
-                fontSize: '10px',
-                fontWeight: 'bold',
-                height: '40px',
-              },
-            }}
-          >
-            Save
-          </Button>
+    <Buttons buttonName={"save"} />
+  
     
            
        </Box></motion.div>

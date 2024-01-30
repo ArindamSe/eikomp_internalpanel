@@ -1,6 +1,7 @@
 import { Box, TextField,Button, Typography,MenuItem} from '@mui/material'
 import React,{useState} from 'react'
 import { motion } from 'framer-motion';
+import Buttons from '../Acesories/Button/Buttons';
 function AddProduct() {
 
     const currencies = [
@@ -72,7 +73,7 @@ function AddProduct() {
   sx={{
     padding: "2rem",
     width: "20rem",
-    height: "20rem",
+    height: "auto",
  
     borderRadius: "5rem",
     display: "flex",
@@ -140,7 +141,42 @@ function AddProduct() {
   }}
   variant="filled"
 />
-
+<TextField
+        id="outlined-select-currency"
+        select
+        label="Compliance Name"
+        defaultValue=""
+         sx={{bgcolor:"white" ,borderRadius:"10px",marginTop:'1rem'}}
+        fullWidth
+        InputLabelProps={{
+          sx: {
+            fontWeight: 'bold',
+            color: '#01579b',
+            '&.Mui-focused': {
+              color: 'black', 
+              fontWeight:"bolder",
+              borderColor: 'brown', // Set the border color when focused
+            },
+          },
+        }}
+      >
+        {currencies.map((option) => (
+          <MenuItem key={option.value} value={option.value}
+          style={{
+            fontSize: '16px',
+            fontWeight: '500',
+            backgroundImage: `linear-gradient(90deg,#ff8a65 30%, #ffab91 90%)`,
+            color: "brown", 
+            borderRadius:"10px", 
+            borderBottom: '1px solid #ccc', 
+            margin: '10px', 
+            paddingBottom: '10px', 
+            transition: 'backgroundColor 0.1s ease', 
+          }}>
+            {option.label}
+          </MenuItem>
+        ))}
+      </TextField>
 <TextField
         id="outlined-select-currency"
         select
@@ -183,32 +219,8 @@ function AddProduct() {
 
  
   
-     <Button
-            variant="contained"
-            size="small"
-            marginBottom='5rem'
-          align="right"
-            sx={{
-                backgroundImage: "#ccff90"
-                , marginTop:"2rem",
-               marginLeft:"14rem",
-               fontWeight: 'bold',
-              backgroundColor: '#55B700',
-              color: '#01579b',
-              width:"6rem",
-              transitions: 'transition: opacity 0.7s ease-in-out',
-              '&:hover': {
-                transform: 'scale(1.05)',
-              },
-              '@media (max-width: 600px)': {
-                fontSize: '10px',
-                fontWeight: 'bold',
-                height: '40px',
-              },
-            }}
-          >
-            Save
-          </Button>
+      <Buttons buttonName={"save"} />
+  
     
            
        </Box></motion.div>

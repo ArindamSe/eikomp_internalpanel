@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -15,7 +15,7 @@ import { motion } from 'framer-motion';
 import SearchIcon from "@mui/icons-material/Search";
 import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
-
+import AOS from "aos";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -35,7 +35,7 @@ const customStyles = {
 
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
   "&:nth-of-type(odd)": {
-    backgroundColor: "#f8bbd0",
+    backgroundColor: "#bbdefb",
   },
 
   "&:last-child td, &:last-child th": {
@@ -86,65 +86,67 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 const Data = [
   {
-    ProductName: "Eik/23w/TEC/7434",
+    Category: "Eik/23w/TEC/7434",
     
     Industry: "asfsdf",
-    Compliance: "sEFesgfs",
+    Date: "sEFesgfs",
     Link: "http://localhost:3000/",
   },
   {
-    ProductName: "Eik/23w/WPC/8439",
+    Category: "Eik/23w/WPC/8439",
     
     Industry: "sgsdgs",
-    Compliance: "sdgdgds",
+    Date: "sdgdgds",
     Link: "http://localhost:3000/",
   },
   {
-    ProductName: "Eik/23w/BIS/6501",
+    Category: "Eik/23w/BIS/6501",
     
     Industry: "sdgszd",
-    Compliance: "sgsdg",
+    Date: "sgsdg",
     Link: "http://localhost:3000/",
   },
   {
-    ProductName: "Eik/23w/TEC/7434",
+    Category: "Eik/23w/TEC/7434",
     
     Industry: "asfsdf",
-    Compliance: "sEFesgfs",
+    Date: "sEFesgfs",
     Link: "http://localhost:3000/",
   },
   {
-    ProductName: "Eik/23w/WPC/8439",
+    Category: "Eik/23w/WPC/8439",
     
     Industry: "sgsdgs",
-    Compliance: "sdgdgds",
+    Date: "sdgdgds",
     Link: "http://localhost:3000/",
   },
   {
-    ProductName: "Eik/23w/BIS/6501",
+    Category: "Eik/23w/BIS/6501",
     
     Industry: "sdgszd",
-    Compliance: "sgsdg",
+    Date: "sgsdg",
     Link: "http://localhost:3000/",
   },
   {
-    ProductName: "Eik/23w/TEC/7666",
+    Category: "Eik/23w/TEC/7666",
         Industry: "szgdz",
-    Compliance: "zsdgzsdg",
+    Date: "zsdgzsdg",
     Link: "http://localhost:3000/",
   },
   {
-    ProductName: "Eik/23w/TEC/7687",
+    Category: "Eik/23w/TEC/7687",
        Industry: "zsdg",
-    Compliance: "szdgd",
+    Date: "szdgd",
     Link: "http://localhost:3000/",
   },
 
 ];
-const complianceProduct=["first compliance","second compliance","third compliance"]
-const ProductPage= () => {
-  const [search, setSearch] = useState("");
 
+const Compliance= () => {
+  const [search, setSearch] = useState("");
+  useEffect(() => {
+    AOS.init();
+  }, []);
   return (
     <motion.div
     initial={{ opacity: 0, x: -100 }}
@@ -172,7 +174,7 @@ const ProductPage= () => {
             fontWeight:"bolder"
         }}
       >
-        Product Progress & Reports
+       Compliance Progress & Reports
       </Typography>
       <Box
         sx={{
@@ -205,7 +207,7 @@ const ProductPage= () => {
             />
           </Search>
         </Box>
-        <Link to ={"/Products/NewProducts"}>
+        <Link to ={"/Compliance/AddCompliance"}>
         <Button
           variant="contained"
           size="small"
@@ -228,7 +230,7 @@ const ProductPage= () => {
             },
           }}
         >
-         Add New Product
+         Add New Compliance
         </Button>
         </Link>
       </Box>
@@ -249,11 +251,11 @@ const ProductPage= () => {
                 <StyledTableCell align="left">S.No</StyledTableCell>
                
                 <StyledTableCell align="left">
-                  Product Name
+                  Compliance 
                 </StyledTableCell>
-                <StyledTableCell align="center">Industry</StyledTableCell>
-                
-                <StyledTableCell align="center">Compliance</StyledTableCell>
+      
+                <StyledTableCell align="center">Region</StyledTableCell>
+                <StyledTableCell align="center">Country</StyledTableCell>
                 <StyledTableCell align="center">{""}</StyledTableCell>
               </TableRow>
             </TableHead>
@@ -265,25 +267,23 @@ const ProductPage= () => {
               }).map((row, index) => (
 
                 
-                <StyledTableRow key={row.name}>
+                <StyledTableRow   key={row.name}>
                 
-                  <StyledTableCell align="left" sx={{fontWeight:"bolder" ,color:"#1a237e"}}>{index + 1}</StyledTableCell>
+                  <StyledTableCell  align="left" sx={{fontWeight:"bolder" ,color:"#1a237e"}}>{index + 1}</StyledTableCell>
                   <StyledTableCell align="left" sx={{fontWeight:"bolder" ,color:"#1a237e"}}>
                     
-                      {row.ProductName}
+                      {row.Category}
                    
                   </StyledTableCell>
                
                   <StyledTableCell align="center" sx={{fontWeight:"bolder",color:"#1a237e"}}>{row.Industry}</StyledTableCell>
-                  
+           
                   <StyledTableCell
                     align="center"
                    
                     sx={{fontWeight:"bolder",color:"#1a237e"}}
                   >
-                    {complianceProduct.map((item,index)=>{
-                        return (`${index+1})  ${item},  `)
-                    })}
+                    {row.Date}
                   </StyledTableCell>
                   <StyledTableCell align="center">
                   <Button
@@ -308,30 +308,8 @@ const ProductPage= () => {
           }}
         >
   edit
-        </Button>
-        <Button
-        variant="contained"
-        size="small"
-        sx={{
-          backgroundColor: "#1a237e",
-          color: "white",
-          
-          
-          marginRight: 3,
-          marginLeft: 2,
-          transitions:`transition: opacity 0.7s ease-in-out`,
-          '&:hover': {
-              transform: 'scale(1.05)', // Increase the scale factor for a larger icon on hover
-            },
-          "@media (max-width: 600px)": {
-            fontSize: "10px",
-            fontWeight: "bold",
-            height: "40px",
-          },
-        }}
-      >
-upload
-      </Button>
+        </Button> 
+    
                 </StyledTableCell>
                 </StyledTableRow>
               ))}
@@ -343,4 +321,4 @@ upload
   );
 };
 
-export default ProductPage;
+export default Compliance;

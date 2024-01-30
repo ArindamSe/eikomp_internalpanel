@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -15,7 +15,7 @@ import { motion } from 'framer-motion';
 import SearchIcon from "@mui/icons-material/Search";
 import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
-
+import AOS from "aos";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -26,16 +26,11 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
     fontSize: 14,
   },
 }));
-const customStyles = {
-  width: "200px", // Example width
-  height: "40px", // Example height
-  border: "1px solid white", // Example white border
-  color: "white", // Example white text color
-};
+
 
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
   "&:nth-of-type(odd)": {
-    backgroundColor: "#f8bbd0",
+    backgroundColor: "#bbdefb",
   },
 
   "&:last-child td, &:last-child th": {
@@ -86,65 +81,77 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 const Data = [
   {
-    ProductName: "Eik/23w/TEC/7434",
+    Name: "zsgfzg",
     
-    Industry: "asfsdf",
-    Compliance: "sEFesgfs",
-    Link: "http://localhost:3000/",
+    Email: "asfsdf",
+    Role: "sEFesgfs",
+    Mobile: "zdfgdf",
+    Address:"eafsef"
   },
   {
-    ProductName: "Eik/23w/WPC/8439",
+    Name: "zsgfzg",
     
-    Industry: "sgsdgs",
-    Compliance: "sdgdgds",
-    Link: "http://localhost:3000/",
+    Email: "asfsdf",
+    Role: "sEFesgfs",
+    Mobile: "zdfgdf",
+    Address:"eafsef"
   },
   {
-    ProductName: "Eik/23w/BIS/6501",
+    Name: "zsgfzg",
     
-    Industry: "sdgszd",
-    Compliance: "sgsdg",
-    Link: "http://localhost:3000/",
+    Email: "asfsdf",
+    Role: "sEFesgfs",
+    Mobile: "zdfgdf",
+    Address:"eafsef"
   },
   {
-    ProductName: "Eik/23w/TEC/7434",
+    Name: "zsgfzg",
     
-    Industry: "asfsdf",
-    Compliance: "sEFesgfs",
-    Link: "http://localhost:3000/",
+    Email: "asfsdf",
+    Role: "sEFesgfs",
+    Mobile: "zdfgdf",
+    Address:"eafsef"
   },
   {
-    ProductName: "Eik/23w/WPC/8439",
+    Name: "zsgfzg",
     
-    Industry: "sgsdgs",
-    Compliance: "sdgdgds",
-    Link: "http://localhost:3000/",
+    Email: "asfsdf",
+    Role: "sEFesgfs",
+    Mobile: "zdfgdf",
+    Address:"eafsef"
   },
   {
-    ProductName: "Eik/23w/BIS/6501",
+    Name: "zsgfzg",
     
-    Industry: "sdgszd",
-    Compliance: "sgsdg",
-    Link: "http://localhost:3000/",
+    Email: "asfsdf",
+    Role: "sEFesgfs",
+    Mobile: "zdfgdf",
+    Address:"eafsef"
   },
   {
-    ProductName: "Eik/23w/TEC/7666",
-        Industry: "szgdz",
-    Compliance: "zsdgzsdg",
-    Link: "http://localhost:3000/",
+    Name: "zsgfzg",
+    
+    Email: "asfsdf",
+    Role: "sEFesgfs",
+    Mobile: "zdfgdf",
+    Address:"eafsef"
   },
   {
-    ProductName: "Eik/23w/TEC/7687",
-       Industry: "zsdg",
-    Compliance: "szdgd",
-    Link: "http://localhost:3000/",
+    Name: "zsgfzg",
+    
+    Email: "asfsdf",
+    Role: "sEFesgfs",
+    Mobile: "zdfgdf",
+    Address:"eafsef"
   },
 
 ];
-const complianceProduct=["first compliance","second compliance","third compliance"]
-const ProductPage= () => {
-  const [search, setSearch] = useState("");
 
+const UserList= () => {
+  const [search, setSearch] = useState("");
+  useEffect(() => {
+    AOS.init();
+  }, []);
   return (
     <motion.div
     initial={{ opacity: 0, x: -100 }}
@@ -172,7 +179,7 @@ const ProductPage= () => {
             fontWeight:"bolder"
         }}
       >
-        Product Progress & Reports
+        User List
       </Typography>
       <Box
         sx={{
@@ -197,7 +204,7 @@ const ProductPage= () => {
               <SearchIcon />
             </SearchIconWrapper>
             <StyledInputBase
-              placeholder=" ApplicationCategory"
+              placeholder=" Search UserName"
               inputProps={{ "aria-label": "search" }}
               onChange={(e) => {
                 setSearch(e.target.value);
@@ -205,32 +212,7 @@ const ProductPage= () => {
             />
           </Search>
         </Box>
-        <Link to ={"/Products/NewProducts"}>
-        <Button
-          variant="contained"
-          size="small"
-          sx={{
-            
-            backgroundColor: "#1a237e",
-            color: "white",
-            marginTop: 2,
-            marginBottom: 2,
-            marginRight: 3,
-            marginLeft: 2,
-            transitions:`transition: opacity 0.7s ease-in-out`,
-            '&:hover': {
-                transform: 'scale(1.05)', // Increase the scale factor for a larger icon on hover
-              },
-            "@media (max-width: 600px)": {
-              fontSize: "10px",
-              fontWeight: "bold",
-              height: "40px",
-            },
-          }}
-        >
-         Add New Product
-        </Button>
-        </Link>
+        
       </Box>
       <Box
         sx={{
@@ -249,11 +231,12 @@ const ProductPage= () => {
                 <StyledTableCell align="left">S.No</StyledTableCell>
                
                 <StyledTableCell align="left">
-                  Product Name
+                  User Name
                 </StyledTableCell>
-                <StyledTableCell align="center">Industry</StyledTableCell>
-                
-                <StyledTableCell align="center">Compliance</StyledTableCell>
+                <StyledTableCell align="center">Email</StyledTableCell>
+                <StyledTableCell align="center">Role</StyledTableCell>
+                <StyledTableCell align="center">Mobile Number</StyledTableCell>
+                <StyledTableCell align="center">Addres</StyledTableCell>
                 <StyledTableCell align="center">{""}</StyledTableCell>
               </TableRow>
             </TableHead>
@@ -265,27 +248,35 @@ const ProductPage= () => {
               }).map((row, index) => (
 
                 
-                <StyledTableRow key={row.name}>
+                <StyledTableRow   key={row.Name}>
                 
-                  <StyledTableCell align="left" sx={{fontWeight:"bolder" ,color:"#1a237e"}}>{index + 1}</StyledTableCell>
+                  <StyledTableCell  align="left" sx={{fontWeight:"bolder" ,color:"#1a237e"}}>{index + 1}</StyledTableCell>
                   <StyledTableCell align="left" sx={{fontWeight:"bolder" ,color:"#1a237e"}}>
                     
-                      {row.ProductName}
+                      {row.Name}
                    
                   </StyledTableCell>
                
-                  <StyledTableCell align="center" sx={{fontWeight:"bolder",color:"#1a237e"}}>{row.Industry}</StyledTableCell>
-                  
+                  <StyledTableCell align="center" sx={{fontWeight:"bolder",color:"#1a237e"}}>{row.Email}</StyledTableCell>
+                  <StyledTableCell align="center" sx={{fontWeight:"bolder",color:"#1a237e"}}>
+                    {row.Role}
+                  </StyledTableCell>
                   <StyledTableCell
                     align="center"
                    
                     sx={{fontWeight:"bolder",color:"#1a237e"}}
                   >
-                    {complianceProduct.map((item,index)=>{
-                        return (`${index+1})  ${item},  `)
-                    })}
+                    {row.Mobile}
                   </StyledTableCell>
+                  <StyledTableCell
+                  align="center"
+                 
+                  sx={{fontWeight:"bolder",color:"#1a237e"}}
+                >
+                  {row.Address}
+                </StyledTableCell>
                   <StyledTableCell align="center">
+                  <Link to={"/EditUser"}>
                   <Button
           variant="contained"
           size="small"
@@ -294,8 +285,8 @@ const ProductPage= () => {
             color: "white",
             
             
-            marginRight: 3,
-            marginLeft: 2,
+            marginRight: 2,
+           
             transitions:`transition: opacity 0.7s ease-in-out`,
             '&:hover': {
                 transform: 'scale(1.05)', // Increase the scale factor for a larger icon on hover
@@ -309,16 +300,16 @@ const ProductPage= () => {
         >
   edit
         </Button>
+        </Link>
         <Button
         variant="contained"
         size="small"
         sx={{
-          backgroundColor: "#1a237e",
+          backgroundColor: "brown",
           color: "white",
           
           
-          marginRight: 3,
-          marginLeft: 2,
+         
           transitions:`transition: opacity 0.7s ease-in-out`,
           '&:hover': {
               transform: 'scale(1.05)', // Increase the scale factor for a larger icon on hover
@@ -326,11 +317,11 @@ const ProductPage= () => {
           "@media (max-width: 600px)": {
             fontSize: "10px",
             fontWeight: "bold",
-            height: "40px",
+            height: "30px",
           },
         }}
       >
-upload
+Delete
       </Button>
                 </StyledTableCell>
                 </StyledTableRow>
@@ -343,4 +334,4 @@ upload
   );
 };
 
-export default ProductPage;
+export default UserList;

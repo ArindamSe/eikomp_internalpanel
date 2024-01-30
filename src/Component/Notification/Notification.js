@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -15,7 +15,7 @@ import { motion } from 'framer-motion';
 import SearchIcon from "@mui/icons-material/Search";
 import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
-
+import AOS from "aos";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -144,7 +144,9 @@ const Data = [
 
 const Notification= () => {
   const [search, setSearch] = useState("");
-
+  useEffect(() => {
+    AOS.init();
+  }, []);
   return (
     <motion.div
     initial={{ opacity: 0, x: -100 }}
@@ -265,9 +267,9 @@ const Notification= () => {
               }).map((row, index) => (
 
                 
-                <StyledTableRow key={row.name}>
+                <StyledTableRow   key={row.name}>
                 
-                  <StyledTableCell align="left" sx={{fontWeight:"bolder" ,color:"#1a237e"}}>{index + 1}</StyledTableCell>
+                  <StyledTableCell  align="left" sx={{fontWeight:"bolder" ,color:"#1a237e"}}>{index + 1}</StyledTableCell>
                   <StyledTableCell align="left" sx={{fontWeight:"bolder" ,color:"#1a237e"}}>
                     
                       {row.Category}

@@ -12,6 +12,10 @@ import StatusForm from './Component/Application/StatusForm';
 import NewApplicationForm from './Component/Application/NewApplication';
 import ProductPage from './Component/Product/ProductPage';
 import AddProduct from './Component/Product/AddProduct';
+import Compliance from './Component/Compliance/Compliance';
+import AddCompliance from './Component/Compliance/AddNewCompliance';
+import UserList from "./Component/UserList/userList"
+import EditUser from './Component/UserList/EditUser';
 function App() {
    
   return (
@@ -22,7 +26,9 @@ function App() {
       <Navbar />
 
      <Routes>
-          <Route exact path="/" element={<DashboardPanel />} />
+          <Route exact path="/DashboardPanel" element={<DashboardPanel />} />
+          <Route exact path="/" element={<UserList />} />
+          <Route exact path="/EditUser" element={<EditUser />} />
           <Route path="/Notification" element={<Notification />} />
           <Route path="/Notification/addNotification" element={<AddNotification />} />
           <Route path="/Application" element={<ApplicationPage />} />
@@ -31,6 +37,8 @@ function App() {
           <Route path="/Application/Status" element={<StatusForm />} />
           <Route path="/Products" element={<ProductPage />} />
           <Route path="/Products/NewProducts" element={<AddProduct />} />
+          <Route path="/Compliance" element={<Compliance />} />
+          <Route path="/Compliance/AddCompliance" element={<AddCompliance />} />
           </Routes>
       </Box>
     </>
